@@ -122,8 +122,23 @@ void inserirElemento()
 
 void excluirElemento()
 {
+	int valor;
+	cout << "Digite o elemento que quer deletar: ";
+	cin >> valor;
+	int pos = posicaoElemento(valor);
+	int novapos = 0;
 
-
+	if (pos != -1) {
+		for (int x = pos; x < nElementos; x++)
+			lista[x] = lista[x + 1];
+			nElementos--;
+	}
+	
+	else
+	{
+		cout << "ERRO! O elemento digitado nao foi encontrado" << endl;
+	}
+	
 }
 
 void buscarElemento()
@@ -134,7 +149,7 @@ void buscarElemento()
 	int pos = posicaoElemento(valor);
 
 	if (pos != -1) {
-		cout << "O elemento foi encontrado na posicao" << pos << endl;
+		cout << "O elemento foi encontrado na posicao: " << pos << endl;
 	}
 	else
 	{
@@ -148,6 +163,7 @@ int posicaoElemento(int busca)
 	for (int i = 0; i < nElementos; i++) {
 		if (busca == lista[i]) {
 			posicao = i;
+			break;
 		}
 	}
 	return posicao;
